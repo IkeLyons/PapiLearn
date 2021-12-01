@@ -1,5 +1,7 @@
 import gym
-env = gym.make('MountainCar-v0')
+import PapiLearn
+# env = gym.make('MountainCar-v0')
+env = gym.make('PapiLearn-v0')
 import time 
 
 # Number of steps you run the agent for 
