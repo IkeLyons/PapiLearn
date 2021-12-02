@@ -15,7 +15,7 @@ for step in range(num_steps):
     action = env.action_space.sample()
     
     # apply the action
-    # obs, reward, done, info = env.step(action)
+    obs, reward, done, info = env.step(action)
     
     # Render the env
     env.render()

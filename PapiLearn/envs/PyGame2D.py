@@ -13,10 +13,17 @@ class PyGame2D:
         self.screen_width = screen_width
         self.clock = pygame.time.Clock()
         self.game_speed = 60
-        self.char = ch.Character('character.png', (200, 100))
+        self.char = ch.Character('character.png', [200, 100])
 
     def act(self, action):
-        pass
+        if action == 0:
+            self.char.speed += 5
+        elif action == 1:
+            self.char.speed -= 5
+        elif action == 2: # stop
+            self.char.speed = 0
+
+        self.char.update()
 
     def eval(self):
         pass

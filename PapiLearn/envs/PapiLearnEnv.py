@@ -18,7 +18,11 @@ class PapiLearnEnv(gym.Env):
         return self.pygame.observe()
 
     def step(self, action):
-        pass
+        self.pygame.act(action)
+        obs = self.pygame.observe()
+        reward = self.pygame.eval()
+        done = self.pygame.finished()
+        return obs, reward, done, {}
 
     def render(self, mode='human', close=False):
         self.pygame.view()
