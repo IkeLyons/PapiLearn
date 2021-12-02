@@ -1,4 +1,5 @@
 import pygame
+import random
 import numpy as np
 import PapiLearn.envs.Character as ch
 import PapiLearn.envs.Box as box
@@ -15,7 +16,13 @@ class PyGame2D:
         self.clock = pygame.time.Clock()
         self.game_speed = 60
         self.char = ch.Character('character.png', [175, 600])
-        self.box = box.Box('box.png', [100, 650])
+        self.boxs = self.spawn_boxes(20)
+
+    def spawn_boxes(self, spawn_rate):
+        boxes = []
+        for i in range(spawn_rate):
+            boxes.append(box.Box('box.png', [random.randrange(0, screen_width), random.randrange(0, screen_height)]))
+        return boxes
 
     def act(self, action):
         if action == 0:
@@ -33,7 +40,8 @@ class PyGame2D:
     def view(self):
         self.screen.fill((255, 255, 255))
         self.char.draw(self.screen)
-        self.box.draw(self.screen)
+        for box in self.boxs:
+            box.draw(self.screen)
         pygame.display.flip()
         self.clock.tick(self.game_speed)
 
