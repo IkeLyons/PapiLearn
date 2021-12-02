@@ -1,6 +1,7 @@
 import pygame
 import numpy as np
 import PapiLearn.envs.Character as ch
+import PapiLearn.envs.Box as box
 
 screen_width = 400
 screen_height = 700
@@ -13,15 +14,16 @@ class PyGame2D:
         self.screen_width = screen_width
         self.clock = pygame.time.Clock()
         self.game_speed = 60
-        self.char = ch.Character('character.png', [200, 100])
+        self.char = ch.Character('character.png', [175, 600])
+        self.box = box.Box('box.png', [100, 650])
 
     def act(self, action):
         if action == 0:
-            self.char.speed += 5
+            self.char.xspeed += 5
         elif action == 1:
-            self.char.speed -= 5
+            self.char.xspeed -= 5
         elif action == 2: # stop
-            self.char.speed = 0
+            self.char.xspeed = 0
 
         self.char.update()
 
@@ -29,8 +31,9 @@ class PyGame2D:
         pass
 
     def view(self):
-        self.screen.fill((0, 0, 0))
+        self.screen.fill((255, 255, 255))
         self.char.draw(self.screen)
+        self.box.draw(self.screen)
         pygame.display.flip()
         self.clock.tick(self.game_speed)
 
