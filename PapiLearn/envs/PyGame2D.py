@@ -1,17 +1,9 @@
 import pygame
 import numpy as np
+import PapiLearn.envs.Character as ch
 
 screen_width = 400
 screen_height = 700
-
-class character:
-    def __init__(self, img, pos):
-        self.sprite = pygame.image.load(img)
-        self.sprite = pygame.transform.scale(self.sprite, (50, 50))
-        self.pos = pos
-
-    def draw(self, screen):
-        screen.blit(self.sprite, self.pos)
 
 class PyGame2D:
     def __init__(self):
@@ -21,7 +13,7 @@ class PyGame2D:
         self.screen_width = screen_width
         self.clock = pygame.time.Clock()
         self.game_speed = 60
-        self.char = character('character.png', (200, 100))
+        self.char = ch.Character('character.png', (200, 100))
 
     def act(self, action):
         pass
