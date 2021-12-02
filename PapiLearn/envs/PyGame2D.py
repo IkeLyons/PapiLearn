@@ -43,6 +43,8 @@ class PyGame2D:
         return state
 
     def finished(self):
-        pass
+        if self.char.pos[1] > self.screen_height:
+            return True
+        return False
 
 
