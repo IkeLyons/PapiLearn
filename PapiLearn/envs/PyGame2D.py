@@ -25,7 +25,7 @@ class PyGame2D:
         elif action == 2: # stop
             self.char.xspeed = 0
 
-        self.char.update()
+        self.char.update(self.screen)
 
     def eval(self):
         pass

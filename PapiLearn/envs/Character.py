@@ -12,8 +12,15 @@ class Character:
     def draw(self, screen):
         screen.blit(self.sprite, self.pos)
 
-    def update(self):
+    def collision(self, screen):
+        if self.pos[1] + self.sprite.get_height() < screen.get_height() :
+            if screen.get_at((int(self.pos[0]), int(self.pos[1] + 25))) == (0, 0, 0):
+                return True
+
+    def update(self, screen):
         # self.pos[0] = self.pos[0] + self.xspeed
         self.pos[1] = self.pos[1] + self.yspeed
-        if self.yspeed < 10:
+        if self.yspeed < 5:
             self.yspeed = self.yspeed + self.gravity
+        if self.collision(screen):
+            self.yspeed = -5
