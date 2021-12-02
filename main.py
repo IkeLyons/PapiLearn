@@ -15,7 +15,7 @@ for step in range(num_steps):
     action = env.action_space.sample()
     
     # apply the action
-    obs, reward, done, info = env.step(action)
+    # obs, reward, done, info = env.step(action)
     
     # Render the env
     env.render()
@@ -24,8 +24,8 @@ for step in range(num_steps):
     time.sleep(0.001)
     
     # If the epsiode is up, then start another one
-    if done:
-        env.reset()
+    # if done:
+        # env.reset()
 
 # Close the env
 env.close()

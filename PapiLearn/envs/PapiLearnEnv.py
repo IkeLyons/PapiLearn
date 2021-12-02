@@ -13,7 +13,7 @@ class PapiLearnEnv(gym.Env):
         self.observation_space = spaces.Box(low=0, high=255, shape=(self.pygame.screen_height, self.pygame.screen_width, 3), dtype=np.uint8)
     
     def reset(self):
-        del self.PyGame2D
+        del self.pygame
         self.pygame = PyGame2D()
         return self.pygame.observe()
 
