@@ -16,7 +16,7 @@ class PyGame2D:
         self.clock = pygame.time.Clock()
         self.game_speed = 60
         self.char = ch.Character('character.png', [175, 600])
-        self.boxs = self.spawn_boxes(20)
+        self.boxs = self.spawn_boxes(40)
         self.cameraY = 0
         self.min_height = 700 # higest the player has reached, called min cause pygame 0,0 is top left
 
@@ -28,9 +28,9 @@ class PyGame2D:
 
     def act(self, action):
         if action == 0:
-            self.char.xspeed += 1
+            self.char.xspeed += .1
         elif action == 1:
-            self.char.xspeed -= 1
+            self.char.xspeed -= .1
         elif action == 2: # stop
             self.char.xspeed = 0
 
