@@ -18,11 +18,12 @@ class PyGame2D:
         self.char = ch.Character('character.png', [175, 600])
         self.boxs = self.spawn_boxes(20)
         self.cameraY = 0
+        self.min_height = 700 # higest the player has reached, called min cause pygame 0,0 is top left
 
     def spawn_boxes(self, spawn_rate):
         boxes = []
         for i in range(spawn_rate):
-            boxes.append(box.Box('box.png', [random.randrange(0, screen_width), random.randrange(0, screen_height)]))
+            boxes.append(box.Box('box.png', [random.randrange(-100, screen_width), random.randrange(0, screen_height)]))
         return boxes
 
     def act(self, action):
@@ -40,10 +41,17 @@ class PyGame2D:
 
     def view(self):
         self.screen.fill((255, 255, 255))
-        self.cameraY = self.char.pos[1] - self.screen_height/2
+        self.cameraY = self.char.pos[1] - self.screen_height/1.3
+        if self.char.pos[1] < self.min_height:
+            self.min_height = self.char.pos[1]
+            if random.random() < 0.1:
+                x = random.randrange(-100, screen_width)
+                y = random.randrange(0, screen_height) - self.min_height
+                self.boxs.append(box.Box('box.png', [x, y]))
+
         self.char.draw(self.screen, self.cameraY)
-        for box in self.boxs:
-            box.draw(self.screen, self.cameraY)
+        for b in self.boxs:
+            b.draw(self.screen, self.cameraY)
         pygame.display.flip()
         self.clock.tick(self.game_speed)
 
