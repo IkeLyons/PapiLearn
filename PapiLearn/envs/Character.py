@@ -12,11 +12,12 @@ class Character:
 
     def draw(self, screen, offset):
         screen.blit(self.sprite, (self.pos[0], self.pos[1] - offset))
+        self.camera_offset = offset
 
     def collision(self, screen):
         if self.pos[1] + self.sprite.get_height() < screen.get_height() : # boundary checking
             if self.yspeed > 0: # if the character is falling
-                if screen.get_at((int(self.pos[0]), int(self.pos[1] + 25))) == (0, 0, 0):
+                if screen.get_at((int(self.pos[0]), int(self.pos[1] + 25 - self.camera_offset))) == (0, 0, 0):
                     return True
 
     def update(self, screen):
