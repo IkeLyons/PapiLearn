@@ -16,14 +16,14 @@ class PyGame2D:
         self.clock = pygame.time.Clock()
         self.game_speed = 60
         self.char = ch.Character('character.png', [175, 600])
-        self.boxs = self.spawn_boxes(40)
+        self.boxs = self.spawn_boxes(80)
         self.cameraY = 0
         self.min_height = 700 # higest the player has reached, called min cause pygame 0,0 is top left
 
     def spawn_boxes(self, spawn_rate):
         boxes = []
         for i in range(spawn_rate):
-            boxes.append(box.Box('box.png', [random.randrange(-100, screen_width), random.randrange(0, screen_height)]))
+            boxes.append(box.Box('box.png', [random.randrange(-100, screen_width), random.randrange(-screen_height, screen_height)]))
         return boxes
 
     def act(self, action):
@@ -63,8 +63,10 @@ class PyGame2D:
 
     def finished(self):
         if self.char.pos[1] > self.screen_height:
+            print('fell off screen')
             return True
         if self.char.pos[0] < 0 - self.char.sprite.get_width() or self.char.pos[0] > self.screen_width:
+            print('went off side')
             return True
         return False
 
