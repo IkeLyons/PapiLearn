@@ -28,9 +28,9 @@ class PyGame2D:
 
     def act(self, action):
         if action == 0:
-            self.char.xspeed += 1
+            self.char.xspeed += 5
         elif action == 1:
-            self.char.xspeed -= 1
+            self.char.xspeed -= 5
         elif action == 2: # stop
             self.char.xspeed = 0
 
@@ -64,6 +64,8 @@ class PyGame2D:
 
     def finished(self):
         if self.char.pos[1] > self.screen_height:
+            return True
+        if self.char.pos[0] < 0 - self.char.sprite.get_width() or self.char.pos[0] > self.screen_width:
             return True
         return False
 
