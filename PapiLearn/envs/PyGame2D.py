@@ -17,6 +17,7 @@ class PyGame2D:
         self.game_speed = 60
         self.char = ch.Character('character.png', [175, 600])
         self.boxs = self.spawn_boxes(20)
+        self.cameraY = 0
 
     def spawn_boxes(self, spawn_rate):
         boxes = []
@@ -39,9 +40,10 @@ class PyGame2D:
 
     def view(self):
         self.screen.fill((255, 255, 255))
-        self.char.draw(self.screen)
+        self.cameraY = self.char.pos[1] - self.screen_height/2
+        self.char.draw(self.screen, self.cameraY)
         for box in self.boxs:
-            box.draw(self.screen)
+            box.draw(self.screen, self.cameraY)
         pygame.display.flip()
         self.clock.tick(self.game_speed)
 

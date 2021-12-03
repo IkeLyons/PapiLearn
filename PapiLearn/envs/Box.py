@@ -7,5 +7,5 @@ class Box:
         self.pos = pos
         self.speed = 0
 
-    def draw(self, screen):
-        screen.blit(self.sprite, self.pos)
+    def draw(self, screen, offset):
+        screen.blit(self.sprite, (self.pos[0], self.pos[1] - offset))
