@@ -28,9 +28,9 @@ class PyGame2D:
 
     def act(self, action):
         if action == 0:
-            self.char.xspeed += 5
+            self.char.xspeed += 1
         elif action == 1:
-            self.char.xspeed -= 5
+            self.char.xspeed -= 1
         elif action == 2: # stop
             self.char.xspeed = 0
 
@@ -42,6 +42,8 @@ class PyGame2D:
     def view(self):
         self.screen.fill((255, 255, 255))
         self.cameraY = self.char.pos[1] - self.screen_height/1.3
+
+        # spawn boxes as player moves higher
         if self.char.pos[1] < self.min_height:
             self.min_height = self.char.pos[1]
             if random.random() < 0.1:
