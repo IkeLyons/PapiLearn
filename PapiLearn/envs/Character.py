@@ -18,7 +18,8 @@ class Character:
         if self.pos[1] + self.sprite.get_height() < screen.get_height() : # boundary checking
             if self.pos[0] - 26 > 0 and self.pos[0] + 26 < screen.get_width():
                 if self.yspeed > 0: # if the character is falling
-                    if screen.get_at((int(self.pos[0] + 12.5), int(self.pos[1] + 25 - self.camera_offset))) == (0, 0, 0):
+                    #print(int(self.pos[1] + 25 - self.camera_offset))
+                    if screen.get_at((int(self.pos[0] + 12.5), max(0,int(self.pos[1] + 25 - self.camera_offset)))) == (0, 0, 0):
                         return True
 
     def update(self, screen):
