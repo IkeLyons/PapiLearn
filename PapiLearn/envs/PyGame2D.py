@@ -119,9 +119,9 @@ class PyGame2D:
         if self.char.pos[0] < 0 - self.char.sprite.get_width() or self.char.pos[0] > self.screen_width:
             #print('went off side')
             return True
-        if self.timer>200:
-            #print('out of time')
-            return True
+        # if self.timer>200:
+        #     #print('out of time')
+        #     return True
         return False
 
 
